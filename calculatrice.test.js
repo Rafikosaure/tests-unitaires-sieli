@@ -14,8 +14,11 @@ describe("test on the calculator", () => {
     it('say the result of a simple division', () => {
         expect(calculatrice("/", 6, 2)).toEqual(3)
     });
-    it('try a division with a float result rounded to the hundredth', () => {
+    it('try a division with a float result rounded down to the nearest hundredth', () => {
         expect(calculatrice("/", 10, 3)).toEqual(3.33)
+    });
+    it('try a division with a float result rounded up to the nearest hundredth', () => {
+        expect(calculatrice("/", 10, 6)).toEqual(1.67)
     });
     it('try to divide a number by 0', () => {
         expect(calculatrice("/", 6, 0)).toBe(null)
