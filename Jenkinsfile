@@ -14,7 +14,7 @@ pipeline {
                 
                 sshagent(['c6d7f844-01ca-4321-81b2-28c7eec772a5']) {
 
-                    bat 'git clone git@github.com:Rafikosaure/tests-unitaires-sieli.git -b dev'
+                    sh 'git clone git@github.com:Rafikosaure/tests-unitaires-sieli.git -b dev'
                 }    
             }
         }
@@ -22,13 +22,13 @@ pipeline {
         
         stage('Install Dependencies') {
             steps {
-                bat 'npm install'
+                sh 'npm install'
             }
         }
         
         stage('Run Tests') {
             steps {
-                bat 'npm test'
+                sh 'npm test'
             }
         }
     }
@@ -36,7 +36,7 @@ pipeline {
         success {
             script { 
                 sshagent(['c6d7f844-01ca-4321-81b2-28c7eec772a5']) {
-                    bat """
+                    sh """
         
                             git config --global user.email "rafikbensadi@live.com"
         
